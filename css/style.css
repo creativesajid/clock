@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --circle-x: 4;
+  --circle-y: 6;
+  --circle-size: calc((100vw / calc(var(--circle-x) * 2)) - .5rem);
+}
+@media (min-width: 480px) {
+  :root {
+    --circle-size: 50px;
+  }
+}
+
+body {
+  background: #F9FAFB;
+  font-family: Inter, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.container header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 1rem 0;
+}
+.container h1 {
+  font-size: clamp(1.5rem, 4vw, 4rem);
+  font-weight: 700;
+  color: #1F2937;
+}
+
+.watch-container {
+  display: grid;
+  grid-template-columns: repeat(2, calc(var(--circle-x) * var(--circle-size)));
+  grid-template-rows: repeat(2, calc(var(--circle-y) * var(--circle-size)));
+  margin-top: 2rem;
+}
+
+.watch-circle-container {
+  display: grid;
+  grid-template-columns: repeat(var(--circle-x), var(--circle-size));
+  grid-template-rows: repeat(var(--circle-y), var(--circle-size));
+}
+
+span {
+  font-size: var(--circle-size);
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  display: block;
+  position: relative;
+  box-shadow: inset 1px -1px 2px 1px rgba(0, 0, 0, 0.17);
+  overflow: hidden;
+}
+span:before, span::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: calc(var(--circle-size) / 2);
+  width: 3px;
+  background: #1F2937;
+  transition: 5s;
+  transform-origin: bottom;
+}
+span::before {
+  transform: rotate(var(--angle-1));
+}
+span::after {
+  transform: rotate(var(--angle-2));
+}
+
+.inspiration-text {
+  margin-top: 3rem;
+  margin-left: 1rem;
+}
+
+.social {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 1rem;
+  background: #1DA1F2;
+  border-radius: 2rem;
+  color: white;
+  text-decoration: none;
+}
+.social:hover {
+  background: #0d76b7;
+}
+.social:visited {
+  color: white;
+}
+.social + .social {
+  margin-left: 1rem;
+}
+@media (min-width: 480px) {
+  .social + .social {
+    margin-left: 2rem;
+  }
+}
+.social-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-shrink: 0;
+}
